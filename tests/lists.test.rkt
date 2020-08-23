@@ -6,6 +6,8 @@
 
 (require rackunit)
 
+(require "../squares-lst-by-limit.rkt")
+
 (my-member-m1 0 '())               ;#f
 (my-member-m1 2 '(2 3 4 5))        ;'(2 3 4 5)
 (my-member-m1 3 '(2 3 4 5))        ;'(3 4 5)
@@ -45,3 +47,7 @@
 
 ;; shorter
 (shorter '(a b c) '(1 32 3 3))
+
+(check-equal? (squares-iter 0) '())
+(check-equal? (squares-iter 1) '(0))
+(check-equal? (squares-iter 10) '(0 1 4 9 16 25 36 49 64 81))
