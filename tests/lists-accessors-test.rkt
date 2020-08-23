@@ -5,8 +5,19 @@
 ;; https://github.com/aryaghan-mutum/racket-predicates
 
 (require rackunit)
+(require "../lists/list-accessors.rkt")
 
+;; cons
+(check-equal? (cons '(a b c) '(d e f)) '((a b c) d e f))
+(check-equal? (cons '(a b c) '(d e f)) '((a b c) d e f))
+(check-equal? (cons '() '(d e f)) '(() d e f))
+(check-equal? (cons '(a b c) '()) '((a b c)))
 
+;; head
+(check-equal? (head '(1 2 3)) 1)
+
+;; cadr
+(check-equal? (cadr '(1 2 3)) 2)  
 
 ;; caar
 (check-equal? (caar '(((2 4 6) 0) 3 5 7)) '(2 4 6))

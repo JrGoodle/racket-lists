@@ -4,6 +4,53 @@
 ;; Email: anu.drumcoder@gmail.com
 ;; https://github.com/aryaghan-mutum/racket-predicates
 
+(provide head
+         cadr
+         caar
+         cdar
+         cddr
+         caaar
+         caadr
+         cadar
+         caddr
+         caddr
+         cdadr
+         cddar
+         cdddr
+         caaaar
+         caaadr
+         caadar
+         caaddr
+         cadaar
+         cadadr
+         caddar
+         cdaaar
+         cdaadr
+         cdadar
+         cdaddr
+         cddaar
+         cddadr
+         cdddar
+         cddddr)
+
+;; construct list
+;; FIX ME
+(define (construct x y)
+  (if (empty? x)
+      y
+      (cons (car x)
+            (construct (cdr x) y))))
+            
+;; car 
+(define (head lst)
+  (if (empty? lst)
+      '()
+      (car lst)))
+
+;; cadr
+(define (cadr lst)
+  (car (cdr lst)))
+
 ;; caar
 (define (caar lst)
   (car (car lst)))
