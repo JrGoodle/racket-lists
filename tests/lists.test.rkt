@@ -18,6 +18,16 @@
 (make-list 6 '())
 (make-list 2 '(1 2 3 4 5))
 
+;; remove-last
+(remove-last '(1 2 3))
+(remove-last '(1))
+(remove-last '(0))
+
+;; nth 
+(nth '(1 2 3') 0)
+(nth '(1 2 3') 1)
+(nth '(1 2 3') 2)
+
 ;; list-tail 
 (list-tail '() 0)
 (list-tail '(a b c) 0) 

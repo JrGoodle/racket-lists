@@ -5,10 +5,11 @@
 ;; https://github.com/aryaghan-mutum/racket-predicates
 
 (provide add-elems
-         length
          copy-list
          reverse 
          last
+         remove-last 
+         nth 
          list-ref
          list-tail
          alternative-elems
@@ -21,20 +22,27 @@
 ;; add numbers to a list
 (define (add-elems n lst) (cons n lst))
 
-;; get the length of a list
-(define (length lst)
-  (define (length-iter lst result)
-    (if (empty? lst)
-      result
-      (length-iter (cdr lst)
-                   (add1 result))))
-  (length-iter lst 0))
-
 ;; get the last element from a list
 (define (last lst)
   (if (empty? (cdr lst))
       (car lst)
       (last (cdr lst))))
+
+;; get the list, except for the last element 
+;; get the list, except for the last element 
+(define (remove-last! lst)
+  (reverse (cdr (reverse lst))))
+
+(define (remove-last lst)
+  (cond ((empty? lst) (error 'remove-last "empty list"))
+        ((empty? (rest lst)) '())
+        (else (cons (car lst) (remove-last (cdr lst))))))
+
+;; get any element from a list 
+(define (nth lst count)
+  (cond ((empty? lst) (error 'nth "index out of bounds"))
+        ((zero? count) (car lst))
+        (else (nth (cdr lst) (sub1 count)))))
 
 ;; get the copied list
 (define (copy-list lst)
