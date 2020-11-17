@@ -131,3 +131,13 @@
     (and (not (empty? lst2))
          (or (null? lst1)
              (shorter? (cdr lst1) (cdr lst2)))))
+
+(define (get-odd-nums lst)
+  (define (get-odds-iter lst rlst)
+    (cond ((empty? lst) rlst)
+          ((odd? (car lst)) (get-odds-iter (cdr lst)
+                                      (cons (car lst) rlst)))
+          (else (get-odds-iter (cdr lst) rlst))))
+  (get-odds-iter lst '()))
+
+(get-odd-nums lst)
